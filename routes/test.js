@@ -4,8 +4,12 @@ const path = require('path');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
-  res.send({ imgDataUrl: req.body.imgDataUrl });
+let total = 0;
+
+router.get('/', (req, res) => {
+  total += 1;
+
+  res.send({ total });
 });
 
 router.post('/save', (req, res) => {

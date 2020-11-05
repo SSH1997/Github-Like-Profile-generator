@@ -3,7 +3,14 @@
 /* eslint-disable no-bitwise */
 document.getElementById('create').addEventListener('click', () => {
   const total = document.getElementById('total');
-  total.innerText = Number(total.innerText) + 1;
+
+  fetch('http://localhost:3000/img', {
+    method: 'GET',
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      total.innerText = res.total;
+    });
 
   const canvas = document.createElement('canvas');
   const size = Number(document.getElementById('size').value);
