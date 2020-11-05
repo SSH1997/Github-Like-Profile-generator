@@ -66,52 +66,37 @@ document.getElementById('create').addEventListener('click', () => {
 
   const imgDataUrl = canvas.toDataURL();
 
-  fetch('http://localhost:3000/img', {
-    method: 'POST',
-    body: JSON.stringify({ imgDataUrl }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      const img = document.createElement('img');
+  const img = document.createElement('img');
 
-      img.id = 'resultImg';
-      img.src = res.imgDataUrl;
-      img.style.border = '2px solid black';
+  img.src = imgDataUrl;
+  img.style.border = '2px solid black';
 
-      const imgzone = document.getElementById('imgzone');
+  const imgzone = document.getElementById('imgzone');
 
-      if (imgzone.lastElementChild) {
-        imgzone.removeChild(imgzone.lastElementChild);
-      }
+  if (imgzone.lastElementChild) {
+    imgzone.removeChild(imgzone.lastElementChild);
+  }
 
-      document.getElementById('imgzone').appendChild(img);
-    });
+  imgzone.appendChild(img);
+
+  ///
+
+  const url = document.createElement('textarea');
+
+  url.id = 'resultUrl';
+  url.innerText = imgDataUrl;
+
+  const urlzone = document.getElementById('urlzone');
+
+  if (urlzone.lastElementChild) {
+    urlzone.removeChild(urlzone.lastElementChild);
+  }
+
+  urlzone.appendChild(url);
 });
 
-document.getElementById('save').addEventListener('click', () => {
-  const imgName = prompt('Insert Image Name');
-
-  if (imgName) {
-    const imgzone = document.getElementById('imgzone');
-
-    const fetchURL = document.createElement('p');
-    fetchURL.innerText = `Fetch URL : http://localhost:3000/img/get:${imgName}`;
-    imgzone.appendChild(fetchURL);
-
-    const imgDataUrl = document.getElementById('resultImg').getAttribute('src');
-
-    fetch('http://localhost:3000/img/save', {
-      method: 'POST',
-      body: JSON.stringify({ imgDataUrl, imgName }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(() => {
-        alert('To get a picture data, send a fetch request to the URL below!');
-      });
-  }
+document.getElementById('copy').addEventListener('click', () => {
+  const url = document.getElementById('resultUrl');
+  url.select();
+  document.execCommand('Copy');
 });
