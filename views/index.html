@@ -3,8 +3,13 @@
 
 </head>
 <body id='app'>
+  <div style="display: flex; flex-direction:row;">
+    <p>오늘 만든 프사 갯수&nbsp;</p>
+    <p id='total'>0</p>
+    <br/>
+  </div>
   <div style="display: flex; align-items: center;">
-    <p>Image Size :&nbsp;</p>
+    <p>이미지 크기 :&nbsp;</p>
     <select style="height: 10%;" id='size'>
       <option value='20'>20px</option>
       <option value='30'>30px</option>
@@ -13,17 +18,17 @@
     </select>
   </div>
   <div style="display: flex; align-items: center;">
-    <p>Number of pieces :&nbsp;</p>
+    <p>조각 갯수 :&nbsp;</p>
     <select style="height: 10%;" id='number'>
       <option value='5'>5 X 5</option>
       <option value='10'>10 x 10</option>
     </select>
   </div>
-  <button id='create'>Create Image!</button>
-  <p>- Result Image -</p>
+  <button id='create'>이미지 만들기!</button>
+  <p>- 결과 이미지 -</p>
   <div id='imgzone'></div>
-  <p>- Image DataURL -</p>
+  <p>- 결과 이미지 URL -</p>
   <div id='urlzone'></div>
-  <button id='copy'>Copy URL!</button>
+  <button id='copy'>URL 복사하기</button>
   <script src='/javascripts/index.js'></script>
 </body>

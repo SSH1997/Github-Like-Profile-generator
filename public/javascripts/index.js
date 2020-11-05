@@ -2,6 +2,9 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-bitwise */
 document.getElementById('create').addEventListener('click', () => {
+  const total = document.getElementById('total');
+  total.innerText = Number(total.innerText) + 1;
+
   const canvas = document.createElement('canvas');
   const size = Number(document.getElementById('size').value);
 
